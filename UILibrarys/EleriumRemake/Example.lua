@@ -1,5 +1,5 @@
 -- Get Library
-local Library = loadstring(game:HttpGet("TEST"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/vrxzpshop/Roblox/main/UILibrarys/EleriumRemake/Library.lua"))()
 
 -- Create Window
 local Window = Library:CreateWindow("Example UI - By vrxzpshop#0")
