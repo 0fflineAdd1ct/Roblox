@@ -365,6 +365,7 @@ function Library:CreateWindow(Text)
 			function Label_1:SetText(newText)
                             LabelText_1.Text = newText
 			end
+			return Label_1
 		end
 		function Elements:CreateButton(Text, Callback)
 
