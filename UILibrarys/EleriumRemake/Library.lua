@@ -362,6 +362,9 @@ function Library:CreateWindow(Text)
 			UIPadding_4.Parent = LabelText_1
 			UIPadding_4.PaddingRight = UDim.new(0,3)
 
+			function Label_1:SetText(newText)
+                            LabelText_1.Text = newText
+			end
 		end
 		function Elements:CreateButton(Text, Callback)
 
