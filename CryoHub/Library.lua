@@ -93,6 +93,8 @@ function Library:CreateWindow()
 	Main_1.Position = UDim2.new(0.5, 0,0.5, 0)
 	Main_1.Size = UDim2.new(0, 530,0, 323)
 	Main_1.Visible = false
+	Main_1.Active = true
+	Main_1.Draggable = true
 	
 	UIStroke_1.Parent = Main_1
 	UIStroke_1.Color = Color3.fromRGB(255,255,255)
@@ -171,72 +173,6 @@ function Library:CreateWindow()
 	Tabs_1.TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png"
 	Tabs_1.VerticalScrollBarInset = Enum.ScrollBarInset.None
 	Tabs_1.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
-
-	local frame = Main_1
-
-	local dragToggle = nil
-
-	local dragSpeed = 0.25 -- the amount of speed you want the drag to be
-
-	local dragStart = nil
-
-	local startPos = nil
-
-
-
-	local function updateInput(input)
-
-		local delta = input.Position - dragStart
-
-		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-
-			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-
-		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
-
-	end
-
-
-
-	frame.InputBegan:Connect(function(input)
-
-		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-
-			dragToggle = true
-
-			dragStart = input.Position
-
-			startPos = frame.Position
-
-			input.Changed:Connect(function()
-
-				if input.UserInputState == Enum.UserInputState.End then
-
-					dragToggle = false
-
-				end
-
-			end)
-
-		end
-
-	end)
-
-
-
-	UIS.InputChanged:Connect(function(input)
-
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-
-			if dragToggle then
-
-				updateInput(input)
-
-			end
-
-		end
-
-	end)
 
 	ElementsHolder_1.Name = "ElementsHolder"
 	ElementsHolder_1.Parent = Main_1
